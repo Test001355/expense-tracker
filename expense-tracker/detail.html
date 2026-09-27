@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>รายละเอียดรายการ — บันทึกรายรับ–รายจ่าย</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <div id="app-nav"></div>
+
+    <main>
+      <div class="page-header">
+        <h1>รายละเอียดรายการ</h1>
+        <p>ดู แก้ไข หรือลบรายการนี้</p>
+      </div>
+
+      <div id="not-found" class="panel" style="display:none;">
+        <p class="empty-state">ไม่พบรายการนี้ — <a href="transactions.html">กลับไปหน้ารายการทั้งหมด</a></p>
+      </div>
+
+      <form id="detail-form" class="panel" style="display:none;">
+        <div class="field" style="margin-bottom:18px;">
+          <label>ประเภท</label>
+          <div class="type-toggle">
+            <label><input type="radio" name="type" value="expense" /><span>รายจ่าย</span></label>
+            <label><input type="radio" name="type" value="income" /><span>รายรับ</span></label>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="field">
+            <label for="amount">จำนวนเงิน (บาท) *</label>
+            <input type="number" id="amount" min="0" step="0.01" required />
+          </div>
+          <div class="field">
+            <label for="date">วันที่ *</label>
+            <input type="date" id="date" required />
+          </div>
+          <div class="field">
+            <label for="category">หมวดหมู่ *</label>
+            <select id="category" required></select>
+          </div>
+          <div class="field">
+            <label for="payment_method">วิธีการชำระเงิน</label>
+            <select id="payment_method">
+              <option value="เงินสด">เงินสด</option>
+              <option value="โอนเงิน">โอนเงิน</option>
+              <option value="พร้อมเพย์">พร้อมเพย์</option>
+              <option value="e-wallet">e-wallet</option>
+              <option value="บัตรเครดิต">บัตรเครดิต</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="merchant">ร้านค้า / ผู้รับเงิน</label>
+            <input type="text" id="merchant" />
+          </div>
+          <div class="field field--full">
+            <label for="description">รายละเอียดรายการ</label>
+            <textarea id="description"></textarea>
+          </div>
+        </div>
+
+        <div class="field" id="slip-wrap" style="display:none; margin-top:14px;">
+          <label>รูปภาพสลิป</label>
+          <img id="slip-image" class="slip-preview-large" />
+        </div>
+
+        <div class="btn-row">
+          <button type="submit" class="btn">บันทึกการแก้ไข</button>
+          <button type="button" id="delete-btn" class="btn btn--danger">ลบรายการ</button>
+          <a href="transactions.html" class="btn btn--secondary">ย้อนกลับ</a>
+        </div>
+      </form>
+    </main>
+  </div>
+
+  <script src="js/utils.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/detail.js"></script>
+</body>
+</html>

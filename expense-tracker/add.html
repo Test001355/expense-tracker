@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>เพิ่มรายการ — บันทึกรายรับ–รายจ่าย</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <div id="app-nav"></div>
+
+    <main>
+      <div class="page-header">
+        <h1>เพิ่มรายการ</h1>
+        <p>บันทึกรายรับหรือรายจ่ายด้วยตนเอง</p>
+      </div>
+
+      <div class="panel">
+        <form id="add-form">
+          <div class="field" style="margin-bottom:18px;">
+            <label>ประเภท</label>
+            <div class="type-toggle">
+              <label><input type="radio" name="type" value="expense" checked /><span>รายจ่าย</span></label>
+              <label><input type="radio" name="type" value="income" /><span>รายรับ</span></label>
+            </div>
+          </div>
+
+          <div class="form-grid">
+            <div class="field">
+              <label for="amount">จำนวนเงิน (บาท) *</label>
+              <input type="number" id="amount" min="0" step="0.01" required />
+            </div>
+            <div class="field">
+              <label for="date">วันที่ *</label>
+              <input type="date" id="date" required />
+            </div>
+            <div class="field">
+              <label for="category">หมวดหมู่ *</label>
+              <select id="category" required></select>
+            </div>
+            <div class="field">
+              <label for="payment_method">วิธีการชำระเงิน</label>
+              <select id="payment_method">
+                <option value="เงินสด">เงินสด</option>
+                <option value="โอนเงิน">โอนเงิน</option>
+                <option value="พร้อมเพย์">พร้อมเพย์</option>
+                <option value="e-wallet">e-wallet</option>
+                <option value="บัตรเครดิต">บัตรเครดิต</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="merchant">ร้านค้า / ผู้รับเงิน</label>
+              <input type="text" id="merchant" placeholder="เช่น 7-Eleven" />
+            </div>
+            <div class="field field--full">
+              <label for="description">รายละเอียดรายการ</label>
+              <textarea id="description" placeholder="รายละเอียดเพิ่มเติม (ถ้ามี)"></textarea>
+              <p class="suggest-hint" id="suggest-hint" style="display:none;"></p>
+            </div>
+          </div>
+
+          <div class="btn-row">
+            <button type="submit" class="btn">บันทึกรายการ</button>
+            <a href="transactions.html" class="btn btn--secondary">ยกเลิก</a>
+          </div>
+        </form>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/utils.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/categorySuggest.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/add.js"></script>
+</body>
+</html>

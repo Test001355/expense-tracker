@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>รายการทั้งหมด — บันทึกรายรับ–รายจ่าย</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <div id="app-nav"></div>
+
+    <main>
+      <div class="page-header" style="display:flex; align-items:flex-end; justify-content:space-between; gap:16px; flex-wrap:wrap;">
+        <div>
+          <h1>รายการทั้งหมด</h1>
+          <p>ค้นหาและกรองรายการรายรับ–รายจ่าย</p>
+        </div>
+        <button id="export-csv-btn" class="btn btn--secondary">⇩ ส่งออก CSV</button>
+      </div>
+
+      <div class="panel">
+        <div class="filters">
+          <div class="field">
+            <label for="f-keyword">ค้นหา</label>
+            <input type="text" id="f-keyword" placeholder="ร้านค้า, รายละเอียด..." />
+          </div>
+          <div class="field">
+            <label for="f-type">ประเภท</label>
+            <select id="f-type">
+              <option value="">ทั้งหมด</option>
+              <option value="income">รายรับ</option>
+              <option value="expense">รายจ่าย</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-category">หมวดหมู่</label>
+            <select id="f-category"><option value="">ทั้งหมด</option></select>
+          </div>
+          <div class="field">
+            <label for="f-from">ตั้งแต่วันที่</label>
+            <input type="date" id="f-from" />
+          </div>
+          <div class="field">
+            <label for="f-to">ถึงวันที่</label>
+            <input type="date" id="f-to" />
+          </div>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>วันที่</th>
+              <th>ประเภท</th>
+              <th>หมวดหมู่</th>
+              <th>รายละเอียด / ร้านค้า</th>
+              <th class="num">จำนวนเงิน</th>
+            </tr>
+          </thead>
+          <tbody id="tx-body"></tbody>
+        </table>
+        <p class="empty-state" id="tx-empty" style="display:none;">ไม่พบรายการที่ตรงกับเงื่อนไข</p>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/utils.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/transactionsList.js"></script>
+</body>
+</html>

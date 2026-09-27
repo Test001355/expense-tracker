@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Dashboard — บันทึกรายรับ–รายจ่าย</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <div id="app-nav"></div>
+
+    <main>
+      <div class="page-header">
+        <h1>Dashboard</h1>
+        <p>ภาพรวมรายรับ–รายจ่ายของคุณ</p>
+      </div>
+
+      <div class="summary-row">
+        <div class="summary-cell summary-cell--income">
+          <div class="summary-cell__label">รายรับทั้งหมด</div>
+          <div class="summary-cell__value figure" id="sum-income">฿0.00</div>
+        </div>
+        <div class="summary-cell summary-cell--expense">
+          <div class="summary-cell__label">รายจ่ายทั้งหมด</div>
+          <div class="summary-cell__value figure" id="sum-expense">฿0.00</div>
+        </div>
+        <div class="summary-cell">
+          <div class="summary-cell__label">ยอดคงเหลือ</div>
+          <div class="summary-cell__value figure" id="sum-balance">฿0.00</div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>งบประมาณรายเดือน</h2>
+        <div class="budget-form">
+          <input type="number" id="budget-input" min="0" step="100" placeholder="ตั้งงบประมาณเดือนนี้ (บาท)" />
+          <button id="save-budget-btn" class="btn btn--secondary">บันทึกงบประมาณ</button>
+        </div>
+        <div id="budget-display" style="display:none; margin-top:16px;">
+          <div class="budget-bar-track"><div class="budget-bar-fill" id="budget-bar-fill"></div></div>
+          <p id="budget-status-text" class="budget-status-text"></p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>รายจ่ายตามหมวดหมู่</h2>
+        <div class="chart-wrap">
+          <canvas id="category-chart" width="320" height="320"></canvas>
+        </div>
+        <p class="empty-state" id="chart-empty" style="display:none;">ยังไม่มีรายการรายจ่าย</p>
+      </div>
+
+      <div class="panel">
+        <h2>รายการล่าสุด</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>วันที่</th>
+              <th>หมวดหมู่</th>
+              <th>รายละเอียด</th>
+              <th class="num">จำนวนเงิน</th>
+            </tr>
+          </thead>
+          <tbody id="recent-body"></tbody>
+        </table>
+        <p class="empty-state" id="recent-empty" style="display:none;">ยังไม่มีรายการ — <a href="add.html">เพิ่มรายการแรกของคุณ</a></p>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
